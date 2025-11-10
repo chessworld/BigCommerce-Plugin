@@ -90,7 +90,8 @@ const BundleStockPage = () => {
     const filteredBundles = bundles.filter(bundle => {
       if (!searchQuery) return true;
       const query = searchQuery.toLowerCase();
-      return (
+      
+return (
         bundle.name.toLowerCase().includes(query) ||
         bundle.sku.toLowerCase().includes(query)
       );
@@ -139,7 +140,8 @@ const BundleStockPage = () => {
   const getFilteredBundlesCount = () => {
     if (!searchQuery) return bundles.length;
     const query = searchQuery.toLowerCase();
-    return bundles.filter(bundle => 
+    
+return bundles.filter(bundle => 
       bundle.name.toLowerCase().includes(query) ||
       bundle.sku.toLowerCase().includes(query)
     ).length;
@@ -159,8 +161,8 @@ const BundleStockPage = () => {
       
       <Box marginBottom="medium">
         <Text>Track inventory levels for bundles and their components. Expand any bundle to see component details.</Text>
-        <Text fontSize="small" color="secondary60" marginTop="xSmall">
-          <Text as="span" bold>⚠️</Text> The warning symbol indicates the limiting component - the item with the lowest "Max Bundles" value that determines how many complete bundles you can make.
+        <Text color="secondary60" marginTop="xSmall">
+          <Text as="span" bold>⚠️</Text> The warning symbol indicates the limiting component - the item with the lowest &quot;Max Bundles&quot; value that determines how many complete bundles you can make.
         </Text>
       </Box>
 
@@ -171,7 +173,7 @@ const BundleStockPage = () => {
           onChange={(e) => setSearchQuery(e.target.value)}
         />
         {searchQuery && (
-          <Text fontSize="small" color="secondary60" marginTop="xSmall">
+          <Text color="secondary60" marginTop="xSmall">
             Showing {getFilteredBundlesCount()} of {bundles.length} bundles
           </Text>
         )}
@@ -187,7 +189,8 @@ const BundleStockPage = () => {
                 if (item.type === 'bundle') {
                   return renderBundleName(item.bundle);
                 }
-                return <Text marginLeft="xxLarge">{item.name}</Text>;
+                
+return <Text marginLeft="xxLarge">{item.name}</Text>;
               },
             },
             {
