@@ -13,7 +13,7 @@ export const TabIds = {
 export const TabRoutes = {
     [TabIds.HOME]: '/',
     [TabIds.PRODUCTS]: '/products',
-    // [TabIds.BUNDLES]: '/bundles/list', // temporarily disabled
+    [TabIds.BUNDLES]: '/bundles/stock',
     [TabIds.DISCOUNTS]: '/discounts',
 };
 
@@ -60,13 +60,13 @@ const Header = () => {
     useEffect(() => {
         // Prefetch products page to reduce latency (doesn't prefetch in dev)
         router.prefetch('/products');
-        // router.prefetch('/bundles/list'); // temporarily disabled
+        router.prefetch('/bundles/stock');
     });
 
     const items = [
         { ariaControls: 'home', id: TabIds.HOME, title: 'Home' },
         { ariaControls: 'products', id: TabIds.PRODUCTS, title: 'Products' },
-        // { ariaControls: 'bundles', id: TabIds.BUNDLES, title: 'Bundles' }, // temporarily disabled
+        { ariaControls: 'bundles', id: TabIds.BUNDLES, title: 'Bundles' },
         { ariaControls: 'discounts', id: TabIds.DISCOUNTS, title: 'Discounts' },
     ];
 

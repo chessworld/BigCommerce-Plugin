@@ -14,11 +14,11 @@ export default function Home() {
         <Text marginTop="medium">
           Manage your products, bundles, and discounts using the navigation above.
         </Text>
-        <Box marginTop="large" display="flex" style={{ gap: 12 }}>
-          <Button onClick={() => goTo('/products')}>Go to Products</Button>
-          <Button onClick={() => goTo('/bundles/list')}>Go to Bundles</Button>
-          <Button onClick={() => goTo('/discounts')}>Go to Discounts</Button>
-        </Box>
+          <Box marginTop="large" display="flex" style={{ gap: 12 }}>
+            <Button onClick={() => goTo('/products')}>Go to Products</Button>
+            <Button onClick={() => goTo('/bundles/stock')}>Go to Bundles</Button>
+            <Button onClick={() => goTo('/discounts')}>Go to Discounts</Button>
+          </Box>
       </Panel>
     </Box>
   );
