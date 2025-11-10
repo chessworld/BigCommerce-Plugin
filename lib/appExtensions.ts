@@ -145,15 +145,17 @@ return 0;
 async function removeAppExtension({ accessToken, storeHash, extensionId }: { accessToken: string, storeHash: string, extensionId: string }) {
     const mutation = {
         query: `
-            mutation DeleteAppExtension($id: ID!) {
+            mutation DeleteAppExtension($input: DeleteAppExtensionInput!) {
                 appExtension {
-                    deleteAppExtension(id: $id) {
-                        success
+                    deleteAppExtension(input: $input) {
+                        deletedAppExtensionId
                     }
                 }
             }`,
         variables: {
-            id: extensionId
+            input: {
+                id: extensionId
+            }
         }
     };
 

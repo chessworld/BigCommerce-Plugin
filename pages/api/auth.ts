@@ -20,11 +20,18 @@ export default async function auth(req: NextApiRequest, res: NextApiResponse) {
 
         /**
          * For stores that do not have the app installed yet, create App Extensions when app is
-         * installed.
+         * installed. This is the ONLY place where app extensions should be created.
          */
 
         if (isAppExtensionsScopeEnabled) {
-            await createAppExtension({ accessToken, storeHash })
+            try {
+                await createAppExtension({ accessToken, storeHash });
+                console.log(`✓ App extension created successfully for store: ${storeHash}`);
+            } catch (error) {
+                // If creation fails due to duplicate, log but don't fail installation
+                console.error('Failed to create app extension during installation:', error);
+                // App can still function, extension can be created manually if needed
+            }
         } else {
             console.warn("WARNING: App extensions scope is not enabled yet. To register app extensions update the scope in Developer Portal: https://devtools.bigcommerce.com");
         }

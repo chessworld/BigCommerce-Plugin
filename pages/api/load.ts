@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { createAppExtension, getAppExtensions, removeDuplicateAppExtensions } from '@lib/appExtensions';
+import { getAppExtensions, removeDuplicateAppExtensions } from '@lib/appExtensions';
 import db from '@lib/db';
 import { encodePayload, getBCVerify, setSession } from '../../lib/auth';
 import { ensureWebhookExists } from '../../lib/webhooks';
@@ -112,17 +112,20 @@ export default async function load(req: NextApiRequest, res: NextApiResponse) {
           });
         }
 
-        // Skip duplicate cleanup on every load - only create if needed
+        // Check for app extensions and clean up duplicates if needed
         if (!hasOurAppExtension) {
-          console.log('Creating app extension for store:', storeHash);
-          await createAppExtension({ accessToken, storeHash });
+          console.warn(`WARNING: App extension is missing for store: ${storeHash}`);
+          console.warn('App extensions should be created during installation (auth.ts).');
+          console.warn('If this is a new installation, please reinstall the app.');
         } else {
-          console.log('App extension already exists for store:', storeHash);
-          // Remove any duplicate app extensions
+          console.log('App extension exists for store:', storeHash);
+          // Remove any duplicate app extensions (one-time cleanup)
           try {
             const extensionCount = await removeDuplicateAppExtensions({ accessToken, storeHash });
             if (extensionCount > 1) {
-              console.log(`Cleaned up ${extensionCount - 1} duplicate app extension(s) for store: ${storeHash}`);
+              console.log(`✓ Cleaned up ${extensionCount - 1} duplicate app extension(s) for store: ${storeHash}`);
+              // Clear cache to force re-check on next load
+              appExtensionCache.delete(cacheKey);
             }
           } catch (error) {
             console.error('Error removing duplicate app extensions:', error);
