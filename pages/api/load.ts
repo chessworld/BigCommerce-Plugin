@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { createAppExtension, getAppExtensions } from '@lib/appExtensions';
+import { createAppExtension, getAppExtensions, removeDuplicateAppExtensions } from '@lib/appExtensions';
 import db from '@lib/db';
 import { encodePayload, getBCVerify, setSession } from '../../lib/auth';
 import { ensureWebhookExists } from '../../lib/webhooks';
@@ -118,6 +118,15 @@ export default async function load(req: NextApiRequest, res: NextApiResponse) {
           await createAppExtension({ accessToken, storeHash });
         } else {
           console.log('App extension already exists for store:', storeHash);
+          // Remove any duplicate app extensions
+          try {
+            const extensionCount = await removeDuplicateAppExtensions({ accessToken, storeHash });
+            if (extensionCount > 1) {
+              console.log(`Cleaned up ${extensionCount - 1} duplicate app extension(s) for store: ${storeHash}`);
+            }
+          } catch (error) {
+            console.error('Error removing duplicate app extensions:', error);
+          }
         }
 
         // Always check and ensure webhooks are active on every app load
