@@ -34,17 +34,29 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const { accessToken, storeHash } = session;
     const bc = bigcommerceClient(accessToken, storeHash);
 
-    // Fetch all products with variants using the all products endpoint
+    // First, get the Bundle category ID to filter products
+    const { data: categories } = await bc.get('/catalog/categories?limit=250');
+    const bundleCategory = categories.find((c: any) => 
+      String(c?.name || '').toLowerCase() === 'bundle'
+    );
+
+    // If no bundle category exists, return empty array
+    if (!bundleCategory) {
+      return res.status(200).json({ bundles: [] });
+    }
+
+    // Fetch only products in the Bundle category (much more efficient!)
     let allProducts = [];
     let currentPage = 1;
     let hasMorePages = true;
 
-    // Fetch all pages to ensure we get ALL bundles
+    // Fetch all pages of bundle products only
     while (hasMorePages) {
       const params = new URLSearchParams({ 
         page: String(currentPage),
         limit: '250', // Maximum allowed
-        include: 'variants'
+        include: 'variants',
+        'categories:in': String(bundleCategory.id)
       }).toString();
 
       const response = await bc.get(`/catalog/products?${params}`);
