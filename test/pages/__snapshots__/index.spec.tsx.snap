@@ -10,124 +10,46 @@ exports[`Homepage renders correctly 1`] = `
     <h1
       class="styled__StyledH1-sc-tqnj75-1 klUKKw"
     >
-      Product Management
+      Welcome
     </h1>
+    <p
+      class="styled__StyledText-sc-tqnj75-5 dpHGsv"
+    >
+      Manage your products, bundles, and discounts using the navigation above.
+    </p>
     <div
-      class="styled__StyledBox-sc-sj5f1m-0 etCLzn styled__StyledFlex-sc-hcvk8l-0 bTLtWP"
+      class="styled__StyledBox-sc-sj5f1m-0 cjPzle"
+      display="flex"
+      style="gap: 12px;"
     >
-      <div
-        class="styled__StyledBox-sc-sj5f1m-0 BRgwK styled__StyledFlex-sc-hcvk8l-0 dzErNZ styled__StyledTabs-sc-6je9le-0 hMmrKb"
-        role="tablist"
+      <button
+        class="styled__StyledButton-sc-3yq204-0 dqPWGG bd-button"
       >
-        <button
-          aria-controls="products-content"
-          aria-selected="true"
-          class="styled__StyledButton-sc-3yq204-0 hIozky styled__StyledTab-sc-6je9le-1 knoMum"
-          id="products"
-          role="tab"
-          tabindex="-1"
+        <span
+          class="styled__ContentWrapper-sc-3yq204-1 ihVQNH"
         >
-          <span
-            class="styled__ContentWrapper-sc-3yq204-1 ihVQNH"
-          >
-            Products
-          </span>
-        </button>
-        <button
-          aria-controls="bundles-content"
-          aria-selected="false"
-          class="styled__StyledButton-sc-3yq204-0 hIozky styled__StyledTab-sc-6je9le-1 ermYJf"
-          id="bundles"
-          role="tab"
-          tabindex="0"
+          Go to Products
+        </span>
+      </button>
+      <button
+        class="styled__StyledButton-sc-3yq204-0 dqPWGG bd-button"
+      >
+        <span
+          class="styled__ContentWrapper-sc-3yq204-1 ihVQNH"
         >
-          <span
-            class="styled__ContentWrapper-sc-3yq204-1 ihVQNH"
-          >
-            Bundles
-          </span>
-        </button>
-      </div>
+          Go to Bundles
+        </span>
+      </button>
+      <button
+        class="styled__StyledButton-sc-3yq204-0 dqPWGG bd-button"
+      >
+        <span
+          class="styled__ContentWrapper-sc-3yq204-1 ihVQNH"
+        >
+          Go to Discounts
+        </span>
+      </button>
     </div>
-    <table
-      class="styled__StyledTable-sc-xns2ns-1 kbgftC"
-      id=":r0:"
-    >
-      <thead
-        class="styled__StyledTableHead-sc-1p8j1x-0"
-      >
-        <tr>
-          <th
-            class="styled__StyledTableHeaderCell-sc-1opnvtt-0 cDEKvS"
-            id="header-cell-0"
-          >
-            <div
-              class="styled__StyledBox-sc-sj5f1m-0 BRgwK styled__StyledFlex-sc-hcvk8l-0 eYuALN styled__StyledFlex-sc-1opnvtt-2 kXIdGS"
-            >
-              Name
-            </div>
-          </th>
-          <th
-            class="styled__StyledTableHeaderCell-sc-1opnvtt-0 cDEKvS"
-            id="header-cell-1"
-          >
-            <div
-              class="styled__StyledBox-sc-sj5f1m-0 BRgwK styled__StyledFlex-sc-hcvk8l-0 eYuALN styled__StyledFlex-sc-1opnvtt-2 kXIdGS"
-            >
-              SKU
-            </div>
-          </th>
-        </tr>
-      </thead>
-      <tbody
-        class="styled__StyledTableBody-sc-1bwe2hn-0"
-      >
-        <tr
-          class="styled__StyledTableRow-sc-xq0hr0-0 iXHitD"
-        >
-          <td
-            class="styled__StyledTableDataCell-sc-16y6nzi-0 eLbxfq"
-          >
-            <button
-              class="styled__StyledButton-sc-3yq204-0 hIozky bd-button"
-            >
-              <span
-                class="styled__ContentWrapper-sc-3yq204-1 ihVQNH"
-              >
-                Product 1
-              </span>
-            </button>
-          </td>
-          <td
-            class="styled__StyledTableDataCell-sc-16y6nzi-0 eLbxfq"
-          >
-            SKU1
-          </td>
-        </tr>
-        <tr
-          class="styled__StyledTableRow-sc-xq0hr0-0 iXHitD"
-        >
-          <td
-            class="styled__StyledTableDataCell-sc-16y6nzi-0 eLbxfq"
-          >
-            <button
-              class="styled__StyledButton-sc-3yq204-0 hIozky bd-button"
-            >
-              <span
-                class="styled__ContentWrapper-sc-3yq204-1 ihVQNH"
-              >
-                Product 2
-              </span>
-            </button>
-          </td>
-          <td
-            class="styled__StyledTableDataCell-sc-16y6nzi-0 eLbxfq"
-          >
-            SKU2
-          </td>
-        </tr>
-      </tbody>
-    </table>
   </div>
 </div>
 `;

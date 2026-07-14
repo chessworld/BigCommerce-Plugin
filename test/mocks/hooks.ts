@@ -42,6 +42,25 @@ export const useProductInfo = jest.fn().mockImplementation(() => ({
     product: productMock,
 }));
 
+// useAllProducts Mock
+const allProductsMock = [...Array(3)].map((_, index) => ({
+    id: index + 100,
+    name: `All Product ${index}`,
+    sku: `ALL-SKU-${index}`,
+    price: (index + 1) * 15,
+    inventory_level: 10,
+    inventory_tracking: 'product',
+    variants: [],
+}));
+
+export const useAllProducts = jest.fn().mockImplementation(() => ({
+    list: allProductsMock,
+    meta: { pagination: { total: allProductsMock.length } },
+    isLoading: false,
+    error: null,
+    mutate: jest.fn(),
+}));
+
 // useBundles Mock
 const bundlesMock = [
     {

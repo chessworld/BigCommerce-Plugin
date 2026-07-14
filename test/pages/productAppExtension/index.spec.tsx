@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import ProductAppExtension from "@pages/productAppExtension/[productId]"; 
-import { render, screen } from '@test/utils';
+import { render, screen, waitFor } from '@test/utils';
 
 jest.mock('@lib/hooks', () => require('@mocks/hooks'));
 jest.mock('next/router', () => ({
@@ -8,14 +8,20 @@ jest.mock('next/router', () => ({
 }));
 
 describe('ProductAppExtension', () => {
-    const router = { query: { pid: '1' } };
-    useRouter.mockReturnValue(router);
+    const router = { query: { productId: '1' } };
+    (useRouter as jest.Mock).mockReturnValue(router);
 
-    test('renders correctly', () => {
+    test('renders correctly', async () => {
         const { container } = render(<ProductAppExtension />);
-        const panelOneHeader = screen.getByText("Basic Information");
+
+        // The bundle settings panel header is the product name (from the mocked
+        // useProductInfo); it appears once the loading flags settle. The page fires
+        // several async state updates on mount, so re-query until the DOM is stable.
+        await waitFor(() => {
+            expect(screen.getByText('Product 1')).toBeInTheDocument();
+        });
 
         expect(container.firstChild).toMatchSnapshot();
-        expect(panelOneHeader).toBeInTheDocument();
     });
 });
+
