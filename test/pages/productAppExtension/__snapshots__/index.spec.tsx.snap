@@ -2,26 +2,33 @@
 
 exports[`ProductAppExtension renders correctly 1`] = `
 <div
-  class="styled__StyledBox-sc-sj5f1m-0 jDICBf styled__StyledPanel-sc-1h6ef3q-0 frQUTZ"
+  class="styled__StyledBox-sc-sj5f1m-0 dnUGcK styled__StyledPanel-sc-1h6ef3q-0 frQUTZ"
 >
+  <h3
+    class="styled__StyledH3-sc-tqnj75-3 gjHyaj"
+  >
+    Loading...
+  </h3>
   <div
-    class="styled__StyledBox-sc-sj5f1m-0 BRgwK styled__StyledFlex-sc-hcvk8l-0 dzErNZ"
+    class="styled__StyledBox-sc-sj5f1m-0 BRgwK styled__StyledFlex-sc-hcvk8l-0 fBGUha"
   >
-    <h2
-      class="styled__StyledH2-sc-tqnj75-2 styled__StyledH2-sc-1h6ef3q-1 JBgla iAkOrm"
+    <svg
+      class="styled__StyledProgressCircle-sc-n3drku-0 bOhvWn"
+      role="progressbar"
     >
-      Basic Information
-    </h2>
+      <circle
+        class="styled__StyledCircle-sc-n3drku-1 kbiMsW"
+        cx="2.5em"
+        cy="2.5em"
+        r="2.25em"
+      />
+      <circle
+        class="styled__StyledCircle-sc-n3drku-1 styled__StyledCircleFiller-sc-n3drku-2 kbiMsW idwKNj"
+        cx="2.5em"
+        cy="2.5em"
+        r="2.25em"
+      />
+    </svg>
   </div>
-  <h4
-    class="styled__StyledH4-sc-tqnj75-4 rUgdM"
-  >
-    Product name
-  </h4>
-  <p
-    class="styled__StyledText-sc-tqnj75-5 fnzVjl"
-  >
-    Product 1
-  </p>
 </div>
 `;
