@@ -3,10 +3,7 @@ import { createAppExtensionMutation, getAppExtensions } from '@lib/appExtensions
 
 const customGlobal: any = global;
 
-const { Response } = jest.requireActual('node-fetch');
-
 customGlobal.fetch = require('jest-fetch-mock');
-customGlobal.fetchResponse = Response;
 
 const fetchMock = customGlobal.fetch as FetchMock;
 
